@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chi Tiết Sản Phẩm</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8f8f8;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .icons img {
+      height: 24px;
+      margin-left: 10px;
+    }
+
+    .banner {
+      background: #56a5f0;
+      color: white;
+      padding: 10px 20px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .scroll-text {
+      white-space: nowrap;
+      animation: scroll-left 15s linear infinite;
+      font-weight: bold;
+    }
+
+    @keyframes scroll-left {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+
+    .breadcrumb {
+      padding: 10px 20px;
+      background: #eee;
+      font-size: 14px;
+    }
+
+    .product-detail {
+      display: flex;
+      padding: 20px;
+    }
+
+    .product-detail .image img {
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .info {
+      margin-left: 30px;
+      max-width: 600px;
+    }
+
+    .price {
+      margin: 10px 0;
+      font-size: 20px;
+    }
+
+    .price .old {
+      text-decoration: line-through;
+      color: #888;
+      margin-right: 10px;
+    }
+
+    .price .new {
+      color: red;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .coupon {
+      margin: 10px 0;
+    }
+
+    .actions {
+      margin-top: 20px;
+    }
+
+    .actions button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      background: #ff4d00;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .size-options, .color-options {
+      margin: 10px 0;
+    }
+
+    .size-options button, .color-options button {
+      padding: 5px 10px;
+      margin: 0 5px 5px 0;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      background: white;
+    }
+
+    .size-options button.active, .color-options button.active {
+      background: #ff4d00;
+      color: white;
+      border-color: #ff4d00;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .quantity-control button {
+      padding: 5px 10px;
+      font-size: 16px;
+    }
+
+    .quantity-control input {
+      width: 40px;
+      text-align: center;
+      margin: 0 5px;
+    }
+
+    .clock {
+      font-size: 16px;
+      font-family: monospace;
+    }
+
+    /* Footer */
+    footer {
+      background: #498de7;
+      color: white;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    footer .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    footer .footer-column {
+      flex: 1;
+      min-width: 200px;
+      margin: 10px 0;
+    }
+
+    footer h4 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 5px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    footer ul li a:hover {
+      color: #fff;
+    }
+
+    .social-icons img {
+      width: 24px;
+      margin-right: 10px;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="OneStep Sneaker Logo"/>
+      <span>OneStep Sneaker</span>
+    </div>
+    <nav>
+      <a href="#">Trang Chủ</a>
+      <a href="#">Sản Phẩm</a>
+      <a href="#">Nam</a>
+      <a href="#">Nữ</a>
+      <a href="#">Phụ kiện</a>
+      <a href="#">Chia sẻ</a>
+    </nav>
+    <div class="icons">
+      <img src="search.png" alt="Tìm kiếm"/>
+      <img src="user.png" alt="User"/>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="scroll-text">OneStep Sneaker Thế Hệ Mới – Thể thao năng động – Trẻ trung – Cá tính – Đẳng cấp cùng bạn mỗi bước chân</div>
+    <div class="clock" id="clock"></div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    Trang chủ / Mua 2 giảm 15% / Giày Sneaker Nam Nữ màu trắng OSB01200DEN
+  </div>
+
+  <!-- Product Detail -->
+  <main class="product-detail">
+    <div class="image">
+      <img src="https://cf.shopee.vn/file/vn-11134207-7ras8-m4sn703psyeud7" alt="Giày Sneaker"/>
+    </div>
+    <div class="info">
+      <h1>Giày Sneaker Teen Nam Nữ màu trắng OSB01200DEN</h1>
+      <p class="price">
+        <span class="old">849,000 ₫</span>
+        <span class="new">549,000 ₫</span>
+      </p>
+      <p class="status">Tình trạng: <span>Còn hàng (36)</span></p>
+
+      <!-- Size -->
+      <div class="size-options">
+        <strong>Size:</strong>
+        <button onclick="selectSize(this)">39</button>
+        <button onclick="selectSize(this)">40</button>
+        <button onclick="selectSize(this)">41</button>
+        <button onclick="selectSize(this)">42</button>
+      </div>
+
+      <!-- Quantity -->
+      <div class="quantity-control">
+        <strong>Số lượng:</strong>
+        <button onclick="changeQty(-1)">-</button>
+        <input type="text" id="qty" value="1" readonly />
+        <button onclick="changeQty(1)">+</button>
+      </div>
+
+      <!-- Color -->
+      <div class="color-options">
+        <strong>Màu sắc:</strong>
+        <button onclick="selectColor(this)">Trắng</button>
+        <button onclick="selectColor(this)">Đen</button>
+        <button onclick="selectColor(this)">Xám</button>
+      </div>
+
+      <div class="coupon">
+        <span>Giảm đến 50K khi thanh toán qua VNPay.</span>
+        <a href="#">Xem thêm</a>
+      </div>
+
+      <div class="actions">
+        <button class="buy">Mua ngay</button>
+        <button class="add-cart">Thêm vào giỏ</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Về Chúng Tôi</h4>
+        <p>OneStep Sneaker là thương hiệu thời trang giày trẻ trung, năng động và luôn dẫn đầu xu hướng.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Liên Kết Nhanh</h4>
+        <ul>
+          <li><a href="#">Trang Chủ</a></li>
+          <li><a href="#">Sản Phẩm</a></li>
+          <li><a href="#">Giỏ Hàng</a></li>
+          <li><a href="#">Liên Hệ</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Liên Hệ</h4>
+        <p>Email: onestep@gmail.vn</p>
+        <p>Điện thoại: 0796 482 756</p>
+        <div class="social-icons">
+          <a href="#"><img src="fb.png" alt="Facebook"></a>
+          <a href="#"><img src="ig.png" alt="Instagram"></a>
+          <a href="#"><img src="yt.png" alt="YouTube"></a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 OneStep Sneaker. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Đồng hồ
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("clock").textContent = now.toLocaleTimeString('vi-VN');
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Chọn size
+    function selectSize(el) {
+      document.querySelectorAll('.size-options button').forEach(btn => btn.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Chọn màu
+    function selectColor(el) {
+      document.querySelectorAll('.color-options button').forEach(btn => btn.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Số lượng
+    function changeQty(delta) {
+      const qtyInput = document.getElementById("qty");
+      let value = parseInt(qtyInput.value);
+      value = Math.max(1, value + delta);
+      qtyInput.value = value;
+    }
+  </script>
+</body>
+</html>
